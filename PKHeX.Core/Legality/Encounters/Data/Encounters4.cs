@@ -189,7 +189,7 @@ namespace PKHeX.Core
                         OutputSlots.Add(swarmSlot);
                     }
                 }
-                Area.Slots = Area.Slots.Concat(OutputSlots).Where(a => a.Species > 0).ToArray();
+                Area.Slots = ((EncounterSlot[]) Area.Slots.Concat(OutputSlots)).Where(a => a.Species > 0).ToArray();
             }
         }
         // Gen 4 raw encounter data does not contains info for alt slots

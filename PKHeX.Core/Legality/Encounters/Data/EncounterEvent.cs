@@ -84,7 +84,7 @@ namespace PKHeX.Core
                 MGDB_G7,
             }.SelectMany(z => z);
             regular = regular.Where(mg => !mg.IsItem && mg.IsPokémon && mg.Species > 0);
-            var result = MGDB_G3.Concat(regular.Distinct());
+            IEnumerable<MysteryGift> result = (MysteryGift[]) MGDB_G3.Concat(regular.Distinct());
             if (sorted)
                 result = result.OrderBy(mg => mg.Species);
             return result;

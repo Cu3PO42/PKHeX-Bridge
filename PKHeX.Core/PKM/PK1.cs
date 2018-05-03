@@ -120,7 +120,7 @@ namespace PKHeX.Core
         {
             var name = PKX.GetSpeciesNameGeneration(Species, GuessedLanguage(), Format);
             var bytes = SetString(name, StringLength);
-            return bytes.Concat(Enumerable.Repeat((byte)0x50, nick.Length - bytes.Length))
+            return ((byte[]) bytes.Concat(Enumerable.Repeat((byte)0x50, nick.Length - bytes.Length)))
                 .Select(b => (byte)(b == 0xF2 ? 0xE8 : b)); // Decimal point<->period fix
         }
         public bool IsNicknamedBank

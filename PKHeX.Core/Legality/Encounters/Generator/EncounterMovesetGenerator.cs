@@ -26,7 +26,7 @@ namespace PKHeX.Core
         {
             pk.TID = info.TID;
             var m = moves ?? pk.Moves;
-            var vers = versions?.Length >= 1 ? versions : Versions.Where(z => z <= (GameVersion) pk.MaxGameID);
+            var vers = versions?.Length >= 1 ? (IEnumerable<GameVersion>) versions : (IEnumerable<GameVersion>) Versions.Where(z => z <= (GameVersion) pk.MaxGameID);
             foreach (var ver in vers)
             {
                 var encs = GenerateVersionEncounters(pk, m, ver);
@@ -53,7 +53,7 @@ namespace PKHeX.Core
         public static IEnumerable<IEncounterable> GenerateEncounters(PKM pk, int[] moves = null, params GameVersion[] versions)
         {
             var m = moves ?? pk.Moves;
-            var vers = versions?.Length >= 1 ? versions : Versions.Where(z => z <= (GameVersion)pk.MaxGameID);
+            var vers = versions?.Length >= 1 ? (IEnumerable<GameVersion>) versions : (IEnumerable<GameVersion>) Versions.Where(z => z <= (GameVersion)pk.MaxGameID);
             return vers.SelectMany(ver => GenerateVersionEncounters(pk, m, ver));
         }
 

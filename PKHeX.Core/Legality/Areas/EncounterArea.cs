@@ -69,7 +69,7 @@ namespace PKHeX.Core
         private static IEnumerable<EncounterSlot1> GetSlots1_GW(byte[] data, ref int ofs, SlotType t)
         {
             int rate = data[ofs++];
-            return rate == 0 ? Enumerable.Empty<EncounterSlot1>() : ReadSlots(data, ref ofs, 10, t, rate);
+            return rate == 0 ? (IEnumerable<EncounterSlot1>)Enumerable.Empty<EncounterSlot1>() : (IEnumerable<EncounterSlot1>)ReadSlots(data, ref ofs, 10, t, rate);
         }
         private static EncounterSlot1[] GetSlots1_F(byte[] data, ref int ofs)
         {
