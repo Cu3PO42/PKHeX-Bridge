@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -685,7 +685,7 @@ namespace PKHeX.Core
         public static ushort CRC16(byte[] data, int start, int length) => CRC16(data, start, length, 0);
         public static byte[] Resign7(byte[] sav7)
         {
-            return MemeCrypto.Resign7(sav7);
+            throw new Error("Meme Crypto not implemented yet");
         }
         /// <summary>Calculates the 32bit checksum over an input byte array. Used in GBA save files.</summary>
         /// <param name="data">Input byte array</param>
