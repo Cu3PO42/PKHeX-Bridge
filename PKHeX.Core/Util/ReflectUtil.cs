@@ -61,13 +61,15 @@ namespace PKHeX.Core
         {
             if (type == typeof(DateTime?)) // Used for PKM.MetDate and other similar properties
             {
-                return DateTime.TryParseExact(value.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateValue)
+                return DateTime.TryParseExact(value.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture, out DateTime dateValue)
                     ? new DateTime?(dateValue)
                     : null;
             }
 
             // Convert.ChangeType is suitable for most things
-            return Convert.ChangeType(value, type);
+            // return Convert.ChangeType(value, type);
+            // TODO: change this back when ChangeType is supported
+            return value;
         }
         public static bool? GetBooleanState(object obj, string prop)
         {
