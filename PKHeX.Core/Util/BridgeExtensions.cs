@@ -21,4 +21,12 @@ namespace PKHeX.Core {
         }
     }
 
+    public static class Buffer {
+        public static void BlockCopy(Array src, int off1, Array target, int off2, int len) {
+            for(int i = 0; i < len; i++) {
+                target[off2 + i] = src[off1 + i];
+            }
+        }
+    }
+
 }
