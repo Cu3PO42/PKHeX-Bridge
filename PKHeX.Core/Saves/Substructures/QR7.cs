@@ -31,7 +31,7 @@ namespace PKHeX.Core
         }
         private static byte[] GetRawQR(int species, int formnum, bool shiny, int gender)
         {
-            var basedata = "FFFFFFFFFFFF00000000000000000000000000000000000000000000000000000000000000000000D20200000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000".ToByteArray();
+            byte[] basedata = { 255,255,255,255,255,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,210,2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
             BitConverter.GetBytes((ushort)species).CopyTo(basedata, 0x28);
             basedata[0x2A] = (byte)formnum;
             basedata[0x2C] = (byte)(shiny ? 1 : 0);
