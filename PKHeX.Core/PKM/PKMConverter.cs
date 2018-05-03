@@ -434,7 +434,7 @@ namespace PKHeX.Core
         /// <returns>New instance of a blank <see cref="PKM"/> object.</returns>
         public static PKM GetBlank(Type t)
         {
-            var constructors = t.GetTypeInfo().DeclaredConstructors.Where(z => !z.IsStatic);
+            var constructors = t.GetConstructors().Where(z => !z.IsStatic);
             var argCount = constructors.First().GetParameters().Length;
             return (PKM)Activator.CreateInstance(t, new object[argCount]);
         }

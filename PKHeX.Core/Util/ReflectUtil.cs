@@ -10,7 +10,7 @@ namespace PKHeX.Core
     {
         public static bool IsValueEqual(object obj, string propertyName, object value)
         {
-            PropertyInfo pi = obj.GetType().GetTypeInfo().GetDeclaredProperty(propertyName);
+            PropertyInfo pi = obj.GetType().GetProperty(propertyName);
             if (pi == null)
                 return false;
             var v = pi.GetValue(obj, null);
@@ -19,28 +19,28 @@ namespace PKHeX.Core
         }
         public static void SetValue(object obj, string propertyName, object value)
         {
-            PropertyInfo pi = obj.GetType().GetTypeInfo().GetDeclaredProperty(propertyName);
+            PropertyInfo pi = obj.GetType().GetProperty(propertyName);
             pi.SetValue(obj, ConvertValue(value, pi.PropertyType), null);            
         }
 
         public static object GetValue(object obj, string propertyName)
         {
-            PropertyInfo pi = obj.GetType().GetTypeInfo().GetDeclaredProperty(propertyName);
+            PropertyInfo pi = obj.GetType().GetProperty(propertyName);
             return pi.GetValue(obj, null);
         }
 
-        public static object GetValue(Type t, string propertyName) => t.GetTypeInfo().GetDeclaredProperty(propertyName).GetValue(null);
-        public static void SetValue(Type t, string propertyName, object value) => t.GetTypeInfo().GetDeclaredProperty(propertyName).SetValue(null, value);
+        public static object GetValue(Type t, string propertyName) => t.GetProperty(propertyName).GetValue(null);
+        public static void SetValue(Type t, string propertyName, object value) => t.GetProperty(propertyName).SetValue(null, value);
 
         public static IEnumerable<string> GetPropertiesStartWithPrefix(Type type, string prefix)
         {
-            return type.GetTypeInfo().DeclaredProperties
+            return type.GetProperties()
                 .Where(p => p.Name.StartsWith(prefix, StringComparison.Ordinal))
                 .Select(p => p.Name);
         }
         public static IEnumerable<string> GetPropertiesCanWritePublic(Type type)
         {
-            return type.GetTypeInfo().DeclaredProperties
+            return type.GetProperties()
                 .Where(p => p.CanWrite && p.SetMethod.IsPublic)
                 .Select(p => p.Name);
         }
@@ -50,7 +50,7 @@ namespace PKHeX.Core
         }
         public static bool HasProperty(this Type type, string name)
         {
-            return type.GetTypeInfo().GetDeclaredProperty(name) != null;
+            return type.GetProperty(name) != null;
         }
         public static bool HasPropertyAll(this Type type, Type Base, string name)
         {

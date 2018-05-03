@@ -255,8 +255,8 @@ namespace PKHeX.Core
                 pkm.TradebackStatus = TradebackType.WasTradeback;
 
             Type = (EncounterOriginalGB ?? EncounterMatch)?.GetType();
-            var bt = Type.GetTypeInfo().BaseType;
-            if (bt != null && !(bt == typeof(Array) || bt == typeof(object) || bt.GetTypeInfo().IsPrimitive)) // a parent exists
+            var bt = Type.BaseType;
+            if (bt != null && !(bt == typeof(Array) || bt == typeof(object) || bt.IsPrimitive())) // a parent exists
                 Type = bt; // use base type
         }
         private void UpdateChecks()

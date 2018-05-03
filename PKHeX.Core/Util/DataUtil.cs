@@ -10,8 +10,6 @@ namespace PKHeX.Core
     public partial class Util
     {
         private const string TranslationSplitter = " = ";
-        private static readonly Assembly thisAssembly = typeof(Util).GetTypeInfo().Assembly;
-        private static readonly string[] manifestResourceNames = thisAssembly.GetManifestResourceNames();
         private static readonly Dictionary<string, string> resourceNameMap = new Dictionary<string, string>();
         private static readonly Dictionary<string, string[]> stringListCache = new Dictionary<string, string[]>();
 
@@ -107,18 +105,19 @@ namespace PKHeX.Core
 
         public static byte[] GetBinaryResource(string name)
         {
-            using (var resource = thisAssembly.GetManifestResourceStream(
+            /*using (var resource = thisAssembly.GetManifestResourceStream(
                 $"PKHeX.Core.Resources.byte.{name}"))
             {
                 var buffer = new byte[resource.Length];
                 resource.Read(buffer, 0, (int)resource.Length);
                 return buffer;
-            }
+            }*/
+            throw new Exception("Not implemented");
         }
 
         public static string GetStringResource(string name)
         {
-            if (!resourceNameMap.ContainsKey(name))
+            /*if (!resourceNameMap.ContainsKey(name))
                 resourceNameMap.Add(name, manifestResourceNames.FirstOrDefault(x =>
                     x.StartsWith("PKHeX.Core.Resources.text.") &&
                     x.EndsWith($"{name}.txt", StringComparison.OrdinalIgnoreCase)));
@@ -128,7 +127,8 @@ namespace PKHeX.Core
 
             using (var resource = thisAssembly.GetManifestResourceStream(resourceNameMap[name]))
             using (var reader = new StreamReader(resource))
-                return reader.ReadToEnd();
+                return reader.ReadToEnd();*/
+            throw new Exception("Not implemented");
         }
 
         #region Non-Form Translation
