@@ -6,7 +6,8 @@ namespace PKHeX.Core
     {
         public static string CleanFileName(string fileName)
         {
-            return string.Concat(fileName.Split(Path.GetInvalidFileNameChars()));
+            //return string.Concat(fileName.Split(Path.GetInvalidFileNameChars()));
+            return fileName;
         }
         public static string TrimFromZero(string input)
         {

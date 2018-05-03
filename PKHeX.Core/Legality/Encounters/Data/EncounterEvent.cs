@@ -44,7 +44,8 @@ namespace PKHeX.Core
 
         public static void RefreshMGDB(params string[] paths)
         {
-            var g4 = GetPCDDB(Util.GetBinaryResource("wc4.pkl"));
+            throw new Exception("Not implemented");
+            /*var g4 = GetPCDDB(Util.GetBinaryResource("wc4.pkl"));
             var g5 = GetPGFDB(Util.GetBinaryResource("pgf.pkl"));
             var g6 = GetWC6DB(Util.GetBinaryResource("wc6.pkl"), Util.GetBinaryResource("wc6full.pkl"));
             var g7 = GetWC7DB(Util.GetBinaryResource("wc7.pkl"), Util.GetBinaryResource("wc7full.pkl"));
@@ -70,7 +71,7 @@ namespace PKHeX.Core
             MGDB_G4 = g4.ToArray();
             MGDB_G5 = g5.ToArray();
             MGDB_G6 = g6.ToArray();
-            MGDB_G7 = g7.ToArray();
+            MGDB_G7 = g7.ToArray();*/
         }
 
         public static IEnumerable<MysteryGift> GetAllEvents(bool sorted = true)

@@ -571,7 +571,7 @@ namespace PKHeX.Core
         /// <returns>Boolean indicating whether or not operation was successful.</returns>
         public static bool GetSavesFromFolder(string folderPath, bool deep, out IEnumerable<string> result)
         {
-            if (!Directory.Exists(folderPath))
+            /*if (!Directory.Exists(folderPath))
             {
                 result = null;
                 return false;
@@ -588,7 +588,8 @@ namespace PKHeX.Core
                 result = new[] {"Error encountered when detecting saves in the following folder:" + Environment.NewLine + folderPath,
                     "Advise manually scanning to remove bad filenames from the folder." + Environment.NewLine + "Likely caused via Homebrew creating invalid filenames."};
                 return false;
-            }
+            }*/
+            throw new Exception("Not implemented");
         }
 
         /// <summary>
@@ -1096,7 +1097,7 @@ namespace PKHeX.Core
         /// <returns>Valid xorpads to enumerate.</returns>
         public static IEnumerable<byte[]> GetXorpadsFromFiles(IEnumerable<string> files)
         {
-            foreach (var file in files)
+            /*foreach (var file in files)
             {
                 // Check if xorpad
                 FileInfo fi = new FileInfo(file);
@@ -1117,7 +1118,8 @@ namespace PKHeX.Core
                     Array.Resize(ref xorpad, 0x100000);
                 }
                 yield return xorpad;
-            }
+            }*/
+            throw new Exception("Not implemented");
         }
         /// <summary>
         /// Decrypts an input array with a xorpad.
@@ -1214,7 +1216,7 @@ namespace PKHeX.Core
         /// <param name="path">Full Path of the file</param>
         public static void SetFileInfo(this SaveFile sav, string path)
         {
-            if (!sav.Exportable) // Blank save file
+            /*if (!sav.Exportable) // Blank save file
             {
                 sav.FilePath = null;
                 sav.FileName = "Blank Save File";
@@ -1231,6 +1233,8 @@ namespace PKHeX.Core
             if (index < 0)
                 return;
             sav.FileName = sav.FileName.Substring(0, index);
+            */
+            throw new Exception("Not implemented");
         }
     }
 }
