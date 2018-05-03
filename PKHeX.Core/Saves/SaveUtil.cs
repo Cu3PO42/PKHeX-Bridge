@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -438,7 +438,6 @@ namespace PKHeX.Core
                 case GameVersion.Gen7:      sav = new SAV7(data); break;
 
                 // Side Games
-                case GameVersion.COLO:      sav = new SAV3Colosseum(data); break;
                 case GameVersion.XD:        sav = new SAV3XD(data); break;
                 case GameVersion.RSBOX:     sav = new SAV3RSBox(data); break;
                 case GameVersion.BATREV:    sav = new SAV4BR(data); break;
@@ -464,7 +463,6 @@ namespace PKHeX.Core
             switch (MC.SelectedGameVersion)
             {
                 // Side Games
-                case GameVersion.COLO: sav = new SAV3Colosseum(data, MC); break;
                 case GameVersion.XD: sav = new SAV3XD(data, MC); break;
                 case GameVersion.RSBOX: sav = new SAV3RSBox(data, MC); break;
 
@@ -519,8 +517,6 @@ namespace PKHeX.Core
                 case GameVersion.R: case GameVersion.S: case GameVersion.E: case GameVersion.FR: case GameVersion.LG:
                     return new SAV3(versionOverride: Game);
 
-                case GameVersion.COLO:
-                    return new SAV3Colosseum();
                 case GameVersion.XD:
                     return new SAV3XD();
                 case GameVersion.RSBOX:
@@ -685,7 +681,7 @@ namespace PKHeX.Core
         public static ushort CRC16(byte[] data, int start, int length) => CRC16(data, start, length, 0);
         public static byte[] Resign7(byte[] sav7)
         {
-            throw new Error("Meme Crypto not implemented yet");
+            throw new Exception("Meme Crypto not implemented yet");
         }
         /// <summary>Calculates the 32bit checksum over an input byte array. Used in GBA save files.</summary>
         /// <param name="data">Input byte array</param>
