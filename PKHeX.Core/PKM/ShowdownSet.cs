@@ -340,7 +340,7 @@ namespace PKHeX.Core
         }
         private void ParseSpeciesNickname(string line)
         {
-            int index = line.LastIndexOf("(", StringComparison.Ordinal);
+            int index = line.LastIndexOf('(');
             string n1, n2;
             if (index > 1) // correct format
             {
