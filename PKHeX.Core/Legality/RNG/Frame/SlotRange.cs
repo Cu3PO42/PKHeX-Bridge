@@ -12,8 +12,14 @@ namespace PKHeX.Core
 
         private static readonly Range[] J_SuperRod = GetRanges(40, 40, 15, 4, 1);
         private static readonly Range[] K_SuperRod = GetRanges(40, 30, 15, 10, 5);
-        private static readonly Range[] K_BCC = GetRanges(5,5,5,5, 10,10,10,10, 20,20).Reverse().ToArray();
+        private static readonly Range[] K_BCC; // Initialized in static constructor
         private static readonly Range[] K_Headbutt = GetRanges(50, 15, 15, 10, 5, 5);
+
+        static SlotRange() {
+            var kbcc = GetRanges(5,5,5,5, 10,10,10,10, 20,20);
+            kbcc.Reverse();
+            K_BCC = kbcc;
+        }
 
         public static int GetSlot(SlotType type, uint rand, FrameType t)
         {
